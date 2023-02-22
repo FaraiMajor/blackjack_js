@@ -1,3 +1,3 @@
 ## Blackjack with JavaScript
 
-![blackjack game](blackjack.png)
+![blackjack game](blackjack.gif)

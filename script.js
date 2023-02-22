@@ -1,6 +1,7 @@
 let hit_El = document.getElementById("hit")
 let stand_El = document.getElementById("stand")
 let start_game = document.getElementById("start-game")
+let restart = document.getElementById("restart")
 
 let dealerSum = 0;
 let yourSum = 0;
@@ -20,14 +21,21 @@ start_game.addEventListener('click', () => {
     startGame();
     hit_El.style.display = ""
     stand_El.style.display = ""
+        // restart.style.display = ""
     start_game.style.display = "none"
 })
 
+// restart game function
+
+restart.addEventListener('click', () => {
+    window.location.reload()
+})
 
 // load game with a start button
 window.onload = function() {
     hit_El.style.display = "none"
     stand_El.style.display = "none"
+    restart.style.display = "none"
 }
 
 // function to build deck
@@ -136,10 +144,9 @@ function stand() {
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("results").innerText = message;
     document.getElementById("your-sum").innerText = yourSum;
+    restart.style.display = ""
 
 }
-
-
 
 function getValue(card) {
     let data = card.split("-");
