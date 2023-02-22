@@ -23,6 +23,7 @@ start_game.addEventListener('click', () => {
     start_game.style.display = "none"
 })
 
+
 // load game with a start button
 window.onload = function() {
     hit_El.style.display = "none"
@@ -99,8 +100,9 @@ function hit() {
 
     if (reduceAce(yourSum, yourAceCount) > 21) {
         canHit = false;
+        document.getElementById("results").innerText = "Dealer wins"
     }
-    document.getElementById("results").innerText = "Dealer wins";
+
     document.getElementById("your-sum").innerText = yourSum;
 }
 
@@ -117,15 +119,16 @@ function stand() {
         message = "You Lost!";
     } else if (dealerSum > 21) {
         message = "You Won!";
+    } else if (yourSum > 21 && dealerSum > 21) {
+        message = "Its A Tie"
     } else if (yourSum == dealerSum) {
         message = "It's A Tie!";
-    } else if (yourSum > dealerSum && yourSum != 21) {
+    } else if (yourSum > dealerSum) {
         message = "You Won!";
-    } else if (yourSum < dealerSum && dealerSum != 21) {
-        message = "You Lot!";
+    } else if (yourSum < dealerSum) {
+        message = "You Lost!";
     } else if (yourSum === 21 && yourSum > dealerSum) {
         message = "IT'S A BLACKJACK : You Won"
-
     } else if (dealerSum === 21 && yourSum < dealerSum) {
         message = "IT'S A BLACKJACK : You Lost"
     }

@@ -1,4 +1,3 @@
 ## Blackjack with JavaScript
 
-<!-- 
-![pong game](pong.gif) -->
+![blackjack game](blackjack.png)
