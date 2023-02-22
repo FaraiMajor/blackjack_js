@@ -1,5 +1,5 @@
 let hit_El = document.getElementById("hit")
-let stand_El = document.getElementById("stay")
+let stand_El = document.getElementById("stand")
 let start_game = document.getElementById("start-game")
 
 let dealerSum = 0;
@@ -13,7 +13,7 @@ let deck;
 
 let canHit = true;
 
-// start button will popuklate the dealer and players cards
+// start button will populate the dealer and players cards
 start_game.addEventListener('click', () => {
     buildDeck();
     shuffleDeck();
@@ -29,6 +29,7 @@ window.onload = function() {
     stand_El.style.display = "none"
 }
 
+// function to build deck
 function buildDeck() {
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     let types = ["C", "D", "H", "S"];
@@ -36,12 +37,13 @@ function buildDeck() {
 
     for (let i = 0; i < types.length; i++) {
         for (let j = 0; j < values.length; j++) {
+            // we saved card in this format 3-H(3 of hearts) so we can call the card image
             deck.push(values[j] + "-" + types[i]);
         }
     }
-    //console.log(deck);
 }
 
+// shuffle deck
 function shuffleDeck() {
     for (let i = 0; i < deck.length; i++) {
         let j = Math.floor(Math.random() * deck.length);
@@ -79,7 +81,7 @@ function startGame() {
 
     console.log(yourSum);
     hit_El.addEventListener("click", hit)
-    stand_El.addEventListener("click", stay)
+    stand_El.addEventListener("click", stand)
 }
 
 
@@ -98,11 +100,11 @@ function hit() {
     if (reduceAce(yourSum, yourAceCount) > 21) {
         canHit = false;
     }
-
+    document.getElementById("results").innerText = "Dealer wins";
     document.getElementById("your-sum").innerText = yourSum;
 }
 
-function stay() {
+function stand() {
 
     dealerSum = reduceAce(dealerSum, dealerAceCount);
     yourSum = reduceAce(yourSum, yourAceCount);
@@ -112,16 +114,22 @@ function stay() {
 
     let message = "";
     if (yourSum > 21) {
-        message = "You lose!";
+        message = "You Lost!";
     } else if (dealerSum > 21) {
-        message = "You win!";
+        message = "You Won!";
     } else if (yourSum == dealerSum) {
-        message = "Tie!";
-    } else if (yourSum > dealerSum) {
-        message = "You win!";
-    } else if (yourSum < dealerSum) {
-        message = "You lose!";
+        message = "It's A Tie!";
+    } else if (yourSum > dealerSum && yourSum != 21) {
+        message = "You Won!";
+    } else if (yourSum < dealerSum && dealerSum != 21) {
+        message = "You Lot!";
+    } else if (yourSum === 21 && yourSum > dealerSum) {
+        message = "IT'S A BLACKJACK : You Won"
+
+    } else if (dealerSum === 21 && yourSum < dealerSum) {
+        message = "IT'S A BLACKJACK : You Lost"
     }
+
     document.getElementById("dealer-sum").innerText = dealerSum;
     document.getElementById("results").innerText = message;
     document.getElementById("your-sum").innerText = yourSum;
