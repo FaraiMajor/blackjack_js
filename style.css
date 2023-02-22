@@ -9,6 +9,8 @@ body {
 
 h1 {
     color: goldenrod;
+    font-size: 3rem;
+    font-weight: 900;
 }
 
 #message-el {
@@ -26,4 +28,16 @@ button {
     border-radius: 2px;
     margin-bottom: 2px;
     margin-top: 2px;
+}
+
+#dealer-cards img {
+    height: 175px;
+    width: 125px;
+    margin: 1px;
+}
+
+#your-cards img {
+    height: 175px;
+    width: 125px;
+    margin: 1px;
 }

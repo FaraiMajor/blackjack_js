@@ -7,13 +7,22 @@
 
 <body>
     <h1>Blackjack</h1>
-    <p id="message-el">Want to play a round?</p>
-    <p id="cards-el">Cards:</p>
-    <p id="sum-el">Sum:</p>
-    <button onclick="startGame()">START GAME</button>
-    <button onclick="hit()">HIT</button>
-    <button onclick="stand()">STAND</button>
+    <h2> Dealer: <span id="dealer-sum"> </span> </h2>
+    <div id="dealer-cards">
+        <img id="hidden" src="./cards/BACK.png">
+    </div>
+
+    <h2> You: <span id="your-sum"> </span> </h2>
+    <div id="your-cards"> </div>
+
+    <br>
+    <button id="start-game">START GAME</button>
+    <button id="hit">Hit</button>
+    <button id="stay">Stand</button>
+    <p id="results"></p>
+
     <script src="script.js"></script>
+
 </body>
 
 </html>
