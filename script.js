@@ -108,7 +108,6 @@ function hit() {
 
     if (reduceAce(yourSum, yourAceCount) > 21) {
         canHit = false;
-        document.getElementById("results").innerText = "Dealer wins"
     }
 
     document.getElementById("your-sum").innerText = yourSum;
@@ -170,6 +169,7 @@ function checkAce(card) {
     return 0;
 }
 
+// account for aces
 function reduceAce(playerSum, playerAceCount) {
     while (playerSum > 21 && playerAceCount > 0) {
         playerSum -= 10;
